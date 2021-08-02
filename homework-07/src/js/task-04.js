@@ -1,19 +1,24 @@
-const buttons = document.getElementsByTagName('button');
-console.log(buttons, '   ', buttons.length);
-
-let rez = document.querySelector('#value').textContent;
-console.log('rez  ', rez);
-const func = function (element) {
-  if (element.dataset.action === 'decrement') {
-    rez--;
-  } else if (element.dataset.action === 'increment') {
-    rez++;
-  }
-  document.querySelector('#value').textContent = `${rez}`;
-};
-
-for (let i = 0; i != buttons.length; i++) {
-  buttons[i].addEventListener('click', func(buttons[i]));
-
-  console.log(buttons[i].dataset.action);
+const butIncrement = document.querySelector('button[data-action="increment"]');
+//console.log(butIncrement);
+const butDecrement = document.querySelector('button[data-action="decrement"]');
+//console.log(butDecrement);
+let counterValue = document.querySelector('#value').textContent;
+//console.log('rez  ', rez);
+function increment() {
+  //console.log('increment()');
+  counterValue++;
+  document.querySelector('#value').textContent = `${counterValue}`;
 }
+function decrement() {
+  //  console.log('decrement()');
+  counterValue--;
+  document.querySelector('#value').textContent = `${counterValue}`;
+}
+butIncrement.addEventListener('click', () => {
+  counterValue++;
+  document.querySelector('#value').textContent = `${counterValue}`;
+});
+butDecrement.addEventListener('click', () => {
+  counterValue--;
+  document.querySelector('#value').textContent = `${counterValue}`;
+});

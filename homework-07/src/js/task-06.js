@@ -1,12 +1,24 @@
 const valInp = document.querySelector('#validation-input');
-
-valInp.setAttribute('class', 'valid');
-console.log('1', valInp.classList);
+//console.dir(valInp);
+//const len = valInp.dataset.length;
+//console.log(len);
 valInp.classList.add('invalid');
-console.log('2', valInp.classList);
+//console.dir(valInp);
+const funcBlur = () => {
+  console.log('funcBlur()');
+  console.log(valInp.value.length);
+  if (valInp.value.length === parseInt(valInp.dataset.length, 10)) {
+    // console.log(`valInp.value.length === valInp.dataset.length`);
+    valInp.classList.forEach(elem => valInp.classList.remove(elem));
+    valInp.classList.add('valid');
+  } else {
+    // console.log(`valInp.value.length != valInp.dataset.length`);
+    valInp.classList.forEach(elem => valInp.classList.remove(elem));
+    valInp.classList.add('invalid');
+  }
+  // console.dir(valInp);
+};
 
-console.log(typeof valInp.getAttribute('data-length'));
-/*
-if(valInp.nodeValue.length===valInp.getAttribute('data-length')){
+valInp.addEventListener('blur', funcBlur);
 
-}*/
+//console.dir(valInp);
